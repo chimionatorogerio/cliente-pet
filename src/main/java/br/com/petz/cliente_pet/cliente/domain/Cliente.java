@@ -38,7 +38,7 @@ public class Cliente {
     @NotNull
     private Boolean aceitaTermos;
 
-    private LocalDateTime dataHoraDoCadastro;
+        private LocalDateTime dataHoraDoCadastro;
     private LocalDateTime dataHoraDaUltimaAlteracao;
 
     public Cliente(ClienteRequest clienteRequest){
