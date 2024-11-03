@@ -1,0 +1,64 @@
+[1mdiff --git a/src/main/java/br/com/petz/cliente_pet/cliente/application/api/ClienteAPI.java b/src/main/java/br/com/petz/cliente_pet/cliente/application/api/ClienteAPI.java[m
+[1mindex 54c0f5d..35f570e 100644[m
+[1m--- a/src/main/java/br/com/petz/cliente_pet/cliente/application/api/ClienteAPI.java[m
+[1m+++ b/src/main/java/br/com/petz/cliente_pet/cliente/application/api/ClienteAPI.java[m
+[36m@@ -4,10 +4,17 @@[m [mimport jakarta.validation.Valid;[m
+ import org.springframework.http.HttpStatus;[m
+ import org.springframework.web.bind.annotation.*;[m
+ [m
+[32m+[m[32mimport java.util.List;[m
+[32m+[m
+ @RestController[m
+ @RequestMapping("/v1/cliente")[m
+ public interface ClienteAPI {[m
+     @PostMapping[m
+     @ResponseStatus(code = HttpStatus.CREATED)[m
+     ClienteResponse postCliente(@Valid @RequestBody ClienteRequest clienteRequest);[m
+[32m+[m
+[32m+[m[32m    @GetMapping[m
+[32m+[m[32m    @ResponseStatus(code = HttpStatus.OK)[m
+[32m+[m[32m    List<ClienteListResponse> getTodosClientes();[m
+[32m+[m
+ }[m
+[1mdiff --git a/src/main/java/br/com/petz/cliente_pet/cliente/application/api/ClienteController.java b/src/main/java/br/com/petz/cliente_pet/cliente/application/api/ClienteController.java[m
+[1mindex 3693626..ef4a9b2 100644[m
+[1m--- a/src/main/java/br/com/petz/cliente_pet/cliente/application/api/ClienteController.java[m
+[1m+++ b/src/main/java/br/com/petz/cliente_pet/cliente/application/api/ClienteController.java[m
+[36m@@ -5,6 +5,8 @@[m [mimport lombok.RequiredArgsConstructor;[m
+ import lombok.extern.log4j.Log4j2;[m
+ import org.springframework.web.bind.annotation.RestController;[m
+ [m
+[32m+[m[32mimport java.util.List;[m
+[32m+[m
+ @RestController[m
+ @Log4j2[m
+ @RequiredArgsConstructor[m
+[36m@@ -18,4 +20,11 @@[m [mpublic class ClienteController implements ClienteAPI {[m
+         log.info("[finaliza] ClienteController - postCliente");[m
+         return clienteCriado;[m
+     }[m
+[32m+[m
+[32m+[m[32m    @Override[m
+[32m+[m[32m    public List<ClienteListResponse> getTodosClientes() {[m
+[32m+[m[32m        log.info("[inicia] ClienteController - getTodosClientes");[m
+[32m+[m[32m        log.info("[finaliza] ClienteController - getTodosClientes");[m
+[32m+[m[32m        return null;[m
+[32m+[m[32m    }[m
+ }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/main/java/br/com/petz/cliente_pet/cliente/application/api/ClienteListResponse.java b/src/main/java/br/com/petz/cliente_pet/cliente/application/api/ClienteListResponse.java[m
+[1mindex da2c52c..65a81dd 100644[m
+[1m--- a/src/main/java/br/com/petz/cliente_pet/cliente/application/api/ClienteListResponse.java[m
+[1m+++ b/src/main/java/br/com/petz/cliente_pet/cliente/application/api/ClienteListResponse.java[m
+[36m@@ -1,4 +1,11 @@[m
+ package br.com.petz.cliente_pet.cliente.application.api;[m
+ [m
+[32m+[m[32mimport java.util.UUID;[m
+[32m+[m
+ public class ClienteListResponse {[m
+[32m+[m[32m    private UUID idCliente;[m
+[32m+[m[32m    private String nomeCompleto;[m
+[32m+[m[32m    private String cpf;[m
+[32m+[m[32m    private String celular;[m
+[32m+[m[32m    private String email;[m
+ }[m
