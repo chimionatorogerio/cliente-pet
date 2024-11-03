@@ -32,10 +32,10 @@ public class Cliente {
     private Sexo sexo;
     @NotNull
     private LocalDate dataNascimento;
-    @NotNull
-    private Boolean aceitaTermos;
     @CPF
     private String cpf;
+    @NotNull
+    private Boolean aceitaTermos;
 
     private LocalDateTime dataHoraDoCadastro;
     private LocalDateTime dataHoraDaUltimaAlteracao;
