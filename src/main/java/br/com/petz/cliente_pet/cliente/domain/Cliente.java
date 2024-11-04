@@ -1,7 +1,10 @@
 package br.com.petz.cliente_pet.cliente.domain;
 
 import br.com.petz.cliente_pet.cliente.application.api.ClienteAlteracaoRequest;
+import br.com.petz.cliente_pet.cliente.application.api.ClienteController;
 import br.com.petz.cliente_pet.cliente.application.api.ClienteRequest;
+import br.com.petz.cliente_pet.cliente.application.service.ClienteApplicationService;
+import br.com.petz.cliente_pet.cliente.application.service.ClienteService;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

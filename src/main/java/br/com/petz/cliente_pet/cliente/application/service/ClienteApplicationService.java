@@ -59,3 +59,4 @@ public class ClienteApplicationService implements ClienteService {
         log.info("[finaliza] ClienteApplicationService - patchAlteraCliente");
     }
 }
+
