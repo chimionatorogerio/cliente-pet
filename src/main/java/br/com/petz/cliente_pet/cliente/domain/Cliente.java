@@ -1,10 +1,7 @@
 package br.com.petz.cliente_pet.cliente.domain;
 
 import br.com.petz.cliente_pet.cliente.application.api.ClienteAlteracaoRequest;
-import br.com.petz.cliente_pet.cliente.application.api.ClienteController;
 import br.com.petz.cliente_pet.cliente.application.api.ClienteRequest;
-import br.com.petz.cliente_pet.cliente.application.service.ClienteApplicationService;
-import br.com.petz.cliente_pet.cliente.application.service.ClienteService;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -36,6 +33,7 @@ public class Cliente {
     @NotBlank
     private String celular;
     private String telefone;
+    @Enumerated(EnumType.STRING)
     private Sexo sexo;
     @NotNull
     private LocalDate dataNascimento;
@@ -45,7 +43,7 @@ public class Cliente {
     @NotNull
     private Boolean aceitaTermos;
 
-        private LocalDateTime dataHoraDoCadastro;
+    private LocalDateTime dataHoraDoCadastro;
     private LocalDateTime dataHoraDaUltimaAlteracao;
 
     public Cliente(ClienteRequest clienteRequest){
