@@ -13,11 +13,11 @@ import java.util.UUID;
 @Log4j2
 @RequiredArgsConstructor
 public class PetInfraRepository implements PetRepository {
-    private final PetSpringDataJPARepository petSpringJPARepository;
+    private final PetSpringDataJPARepository petSpringDataJPARepository;
     @Override
     public Pet salvaPet(Pet pet) {
         log.info("[inicia] PetInfraRepository - salvaPet");
-        petSpringJPARepository.save(pet);
+        petSpringDataJPARepository.save(pet);
         log.info("[FINALIZA] PetInfraRepository - salvaPet");
         return pet;
     }
@@ -25,7 +25,8 @@ public class PetInfraRepository implements PetRepository {
     @Override
     public List<Pet> buscaPetsDoClientePorId(UUID idCliente) {
         log.info("[inicia] PetInfraRepository - buscaPetsDoClientePorId");
+        var pets = petSpringDataJPARepository.findByIdClientTutor(idCliente);
         log.info("[FINALIZA] PetInfraRepository - buscaPetsDoClientePorId");
-        return List.of();
+        return pets;
     }
 }
