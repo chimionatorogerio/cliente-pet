@@ -1,6 +1,8 @@
 package br.com.petz.cliente_pet.pet.domain;
 
+import br.com.petz.cliente_pet.pet.application.api.PetRequest;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
@@ -11,15 +13,16 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor //(access = AccessLevel.PRIVATE)
 @Getter
 @Entity
 public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "idPet", updatable = false, unique = true, nullable = false)
-//    @Column(name = "id", updatable = false, unique = true, nullable = false)
     private UUID idPet;
+    @NotNull
+    private UUID idClienteTutor;
     @NotBlank
     private String nomePet;
     @Enumerated(EnumType.STRING)
@@ -42,4 +45,18 @@ public class Pet {
     private LocalDateTime dataHoraDoCadastro;
     private LocalDateTime dataHoraDaUltimaAlteracao;
 
+    public Pet(UUID idCliente, @Valid PetRequest petRequest) {
+        this.idClienteTutor = idCliente;
+        this.nomePet = petRequest.getNomePet();
+        this.porte = petRequest.getPorte();
+        this.tipo = petRequest.getTipo();
+        this.microchip = petRequest.getMicrochip();
+        this.raca = petRequest.getRaca();
+        this.sexo = petRequest.getSexo();
+        this.pelagemCor = petRequest.getPelagemCor();
+        this.dataNascimento = petRequest.getDataNascimento();
+        this.rga = petRequest.getRga();
+        this.peso = petRequest.getPeso();
+        this.dataHoraDoCadastro = LocalDateTime.now();
+    }
 }
