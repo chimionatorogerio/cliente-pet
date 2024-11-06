@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@NoArgsConstructor //(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @Entity
 public class Pet {
@@ -22,6 +22,7 @@ public class Pet {
     @Column(columnDefinition = "uuid", name = "idPet", updatable = false, unique = true, nullable = false)
     private UUID idPet;
     @NotNull
+    @Column(columnDefinition = "uuid", name = "idClienteTutor", nullable = false)
     private UUID idClienteTutor;
     @NotBlank
     private String nomePet;
