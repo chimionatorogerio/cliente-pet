@@ -53,6 +53,7 @@ public class PetController implements PetAPI {
     public void patchPet(UUID idCliente, UUID idPet, PetAlteracaoRequest petAlteracaoRequest) {
         log.info("[inicia] PetController - patchPet");
         log.info("<< idCliente >> {} - {{ idPet }} {}", idCliente, idPet);
+        petService.patchPet(idCliente, idPet, petAlteracaoRequest);
         log.info("[FINALIZA] PetController - patchPet");
     }
 }
