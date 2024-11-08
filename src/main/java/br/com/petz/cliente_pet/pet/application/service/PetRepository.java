@@ -8,4 +8,5 @@ import java.util.UUID;
 public interface PetRepository {
     Pet salvaPet(Pet pet);
     List<Pet> buscaPetsDoClientePorId(UUID idCliente);
+    Pet buscaPetPeloId(UUID idPet);
 }

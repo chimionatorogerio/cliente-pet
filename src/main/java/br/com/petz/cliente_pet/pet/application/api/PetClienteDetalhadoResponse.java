@@ -1,5 +1,6 @@
 package br.com.petz.cliente_pet.pet.application.api;
 
+import br.com.petz.cliente_pet.pet.domain.Pet;
 import br.com.petz.cliente_pet.pet.domain.Porte;
 import br.com.petz.cliente_pet.pet.domain.SexoPet;
 import br.com.petz.cliente_pet.pet.domain.TipoPet;
@@ -21,4 +22,20 @@ public class PetClienteDetalhadoResponse {
     private LocalDate dataNascimento;
     private String rga;
     private Integer peso;
+
+    public PetClienteDetalhadoResponse(Pet pet) {
+        this.idPet = pet.getIdPet();
+        this.nomePet = pet.getNomePet();
+        this.porte = pet.getPorte();
+        this.tipo = pet.getTipo();
+        this.microchip = pet.getMicrochip();
+        this.raca = pet.getRaca();
+        this.sexo = pet.getSexo();
+        this.pelagemCor = pet.getPelagemCor();
+        this.dataNascimento = pet.getDataNascimento();
+        this.rga = pet.getRga();
+        this.peso = pet.getPeso();
+    }
+
+
 }
