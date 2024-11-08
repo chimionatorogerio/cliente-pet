@@ -1,5 +1,6 @@
 package br.com.petz.cliente_pet.pet.application.api;
 
+import br.com.petz.cliente_pet.cliente.application.api.ClienteAlteracaoRequest;
 import br.com.petz.cliente_pet.cliente.application.api.ClienteDetalhadoResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -29,4 +30,8 @@ public interface PetAPI {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deletaPetDoClienteComId(@PathVariable UUID idCliente, @PathVariable UUID idPet);
 
+    @PatchMapping(value = "/{idPet}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    PetResponse patchPet(@PathVariable UUID idCliente, @PathVariable UUID idPet,
+                         @Valid @RequestBody PetAlteracaoRequest petAlteracaoRequest);
 }
