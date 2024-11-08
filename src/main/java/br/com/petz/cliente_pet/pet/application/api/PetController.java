@@ -40,4 +40,11 @@ public class PetController implements PetAPI {
         log.info("[FINALIZA] PetController - getPetDoClienteComId");
         return pet;
     }
+
+    @Override
+    public void deletaPetDoClienteComId(UUID idCliente, UUID idPet) {
+        log.info("[inicia] PetController - deletaPetDoClienteComId");
+        log.info("<< idCliente >> {} - {{ idPet }} {}", idCliente, idPet);
+        log.info("[FINALIZA] PetController - deletaPetDoClienteComId");
+    }
 }
